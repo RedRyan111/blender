@@ -124,6 +124,7 @@ DefNode(ShaderNode,     SH_NODE_CURVE_FLOAT,        def_float_curve,        "CUR
 DefNode(ShaderNode,     SH_NODE_COMBINE_COLOR,      def_sh_combsep_color,   "COMBINE_COLOR",      CombineColor,     "Combine Color",     "Create a color from individual components using multiple models")
 DefNode(ShaderNode,     SH_NODE_SEPARATE_COLOR,     def_sh_combsep_color,   "SEPARATE_COLOR",     SeparateColor,    "Separate Color",    "Split a color into its individual components using multiple models")
 DefNode(ShaderNode,     SH_NODE_MIX,                def_sh_mix,             "MIX",                Mix,              "Mix",               "Mix values by a factor")
+DefNode(ShaderNode,     SH_NODE_CUSTOM,             def_custom,             "CUSTOM",             Custom,            "Custom",            "Custom Clamp a value between a minimum and a maximum")
 
 DefNode(CompositorNode, CMP_NODE_VIEWER,            def_cmp_viewer,         "VIEWER",          Viewer,           "Viewer",              "Visualize data from inside a node graph, in the image editor or as a backdrop")
 DefNode(CompositorNode, CMP_NODE_RGB,               0,                      "RGB",             RGB,              "RGB",                 "A color picker")

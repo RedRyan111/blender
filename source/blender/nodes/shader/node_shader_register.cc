@@ -34,6 +34,7 @@ void register_shader_nodes()
   register_node_type_sh_bump();
   register_node_type_sh_camera();
   register_node_type_sh_clamp();
+  register_node_type_sh_custom();
   register_node_type_sh_combcolor();
   register_node_type_sh_combhsv();
   register_node_type_sh_combrgb();

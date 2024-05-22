@@ -4298,6 +4298,17 @@ static void def_clamp(StructRNA *srna)
   RNA_def_property_update(prop, NC_NODE | NA_EDITED, "rna_ShaderNode_socket_update");
 }
 
+static void def_custom(StructRNA *srna)
+{
+  PropertyRNA *prop;
+
+  prop = RNA_def_property(srna, "clamp_type", PROP_ENUM, PROP_NONE);
+  RNA_def_property_enum_sdna(prop, nullptr, "custom1");
+  RNA_def_property_enum_items(prop, rna_enum_node_clamp_items);
+  RNA_def_property_ui_text(prop, "Clamp Type", "");
+  RNA_def_property_update(prop, NC_NODE | NA_EDITED, "rna_ShaderNode_socket_update");
+}
+
 static void def_map_range(StructRNA *srna)
 {
   static const EnumPropertyItem rna_enum_data_type_items[] = {

@@ -6235,7 +6235,7 @@ void VectorMapRangeNode::compile(OSLCompiler &compiler)
 
 NODE_DEFINE(ClampNode)
 {
-  NodeType *type = NodeType::add("clamp", create, NodeType::SHADER);
+  NodeType *type = NodeType::add("clamp", create, NodeType::SHADER); //Does this add a new shadder type??! finally found it?
 
   static NodeEnum type_enum;
   type_enum.insert("minmax", NODE_CLAMP_MINMAX);

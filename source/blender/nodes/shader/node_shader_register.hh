@@ -30,6 +30,7 @@ void register_node_type_sh_bsdf_sheen();
 void register_node_type_sh_bump();
 void register_node_type_sh_camera();
 void register_node_type_sh_clamp();
+void register_node_type_sh_custom();
 void register_node_type_sh_combcolor();
 void register_node_type_sh_combhsv();
 void register_node_type_sh_combrgb();

@@ -266,6 +266,7 @@ class NODE_MT_category_shader_converter(Menu):
 
         node_add_menu.add_node_type(layout, "ShaderNodeBlackbody")
         node_add_menu.add_node_type(layout, "ShaderNodeClamp")
+        node_add_menu.add_node_type(layout, "ShaderNodeCustom")
         node_add_menu.add_node_type(layout, "ShaderNodeValToRGB")
         node_add_menu.add_node_type(layout, "ShaderNodeCombineColor")
         node_add_menu.add_node_type(layout, "ShaderNodeCombineXYZ")
