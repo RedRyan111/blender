@@ -153,6 +153,7 @@ set(SRC_KERNEL_SVM_HEADERS
   svm/bump.h
   svm/camera.h
   svm/clamp.h
+  svm/custom.h
   svm/closure.h
   svm/convert.h
   svm/checker.h

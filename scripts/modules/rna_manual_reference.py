@@ -3266,6 +3266,7 @@ url_manual_mapping = (
     ("bpy.types.scriptdirectory*", "editors/preferences/file_paths.html#bpy-types-scriptdirectory"),
     ("bpy.types.shadernodebevel*", "render/shader_nodes/input/bevel.html#bpy-types-shadernodebevel"),
     ("bpy.types.shadernodeclamp*", "render/shader_nodes/converter/clamp.html#bpy-types-shadernodeclamp"),
+    ("bpy.types.shadernodecustom*", "render/shader_nodes/converter/clamp.html#bpy-types-shadernodecustom"),
     ("bpy.types.shadernodegamma*", "render/shader_nodes/color/gamma.html#bpy-types-shadernodegamma"),
     ("bpy.types.shadernodegroup*", "render/shader_nodes/groups.html#bpy-types-shadernodegroup"),
     ("bpy.types.shadernodeuvmap*", "render/shader_nodes/input/uv_map.html#bpy-types-shadernodeuvmap"),

@@ -1357,6 +1357,16 @@ class ClampNode : public ShaderNode {
   NODE_SOCKET_API(NodeClampType, clamp_type)
 };
 
+class CustomNode : public ShaderNode {
+ public:
+  SHADER_NODE_CLASS(CustomNode)
+  void constant_fold(const ConstantFolder &folder);
+  NODE_SOCKET_API(float, value)
+  NODE_SOCKET_API(float, min)
+  NODE_SOCKET_API(float, max)
+  NODE_SOCKET_API(NodeClampType, clamp_type)
+};
+
 class MathNode : public ShaderNode {
  public:
   SHADER_NODE_CLASS(MathNode)
