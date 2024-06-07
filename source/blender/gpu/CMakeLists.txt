@@ -539,7 +539,7 @@ set(GLSL_SRC
   shaders/material/gpu_shader_material_bump.glsl
   shaders/material/gpu_shader_material_camera.glsl
   shaders/material/gpu_shader_material_clamp.glsl
-  shaders/material/gpu_shader_material_custom.glsl
+  shaders/material/gpu_shader_material_shape.glsl
   shaders/material/gpu_shader_material_combine_color.glsl
   shaders/material/gpu_shader_material_combine_hsv.glsl
   shaders/material/gpu_shader_material_combine_rgb.glsl

@@ -190,6 +190,7 @@ DEF_ENUM(rna_enum_node_filter_items)
 DEF_ENUM(rna_enum_node_float_to_int_items)
 DEF_ENUM(rna_enum_node_map_range_items)
 DEF_ENUM(rna_enum_node_clamp_items)
+DEF_ENUM(rna_enum_node_shape_items)
 
 DEF_ENUM(rna_enum_ramp_blend_items)
 

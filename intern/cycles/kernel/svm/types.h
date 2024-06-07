@@ -223,6 +223,11 @@ typedef enum NodeClampType {
   NODE_CLAMP_RANGE,
 } NodeClampType;
 
+typedef enum NodeShapeType {
+  NODE_SHAPE_POLYGON,
+  NODE_SHAPE_CIRCLE,
+} NodeShapeType;
+
 typedef enum NodeMapRangeType {
   NODE_MAP_RANGE_LINEAR,
   NODE_MAP_RANGE_STEPPED,

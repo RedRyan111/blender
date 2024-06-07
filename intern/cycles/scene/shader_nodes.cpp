@@ -6290,63 +6290,71 @@ void ClampNode::compile(OSLCompiler &compiler)
   compiler.add(this, "node_clamp");
 }
 
-/* Custom Node */
+/* Shape Node */
 
-NODE_DEFINE(CustomNode)
+NODE_DEFINE(ShapeNode)
 {
-  NodeType *type = NodeType::add("custom", create, NodeType::SHADER); //Does this add a new shadder type??! finally found it?
+  NodeType *type = NodeType::add("shape", create, NodeType::SHADER);
 
   static NodeEnum type_enum;
-  type_enum.insert("minmax", NODE_CLAMP_MINMAX);
-  type_enum.insert("range", NODE_CLAMP_RANGE);
-  SOCKET_ENUM(clamp_type, "Type", type_enum, NODE_CLAMP_MINMAX);
+  type_enum.insert("polygon", NODE_SHAPE_POLYGON);
+  type_enum.insert("circle", NODE_SHAPE_CIRCLE);
+  SOCKET_ENUM(shape_type, "Type", type_enum, NODE_SHAPE_POLYGON);
 
-  SOCKET_IN_FLOAT(value, "Value", 1.0f);
-  SOCKET_IN_FLOAT(min, "Min", 0.0f);
-  SOCKET_IN_FLOAT(max, "Max", 1.0f);
+  SOCKET_IN_POINT(value, "Value", zero_float3(), SocketType::LINK_TEXTURE_GENERATED);
+  //SOCKET_IN_VECTOR(value, "Value", zero_float3()); // needs to be UV coords?
+  SOCKET_IN_INT(sides, "Sides", 1);
+  SOCKET_IN_VECTOR(offset, "Offset", zero_float3());
+  SOCKET_IN_VECTOR(scale, "Scale", make_float3(1.0f, 1.0f, 0.0f));
+  //SOCKET_IN_VECTOR(rotation, "Rotation", zero_float3());
 
   SOCKET_OUT_FLOAT(result, "Result");
 
   return type;
 }
 
-CustomNode::CustomNode() : ShaderNode(get_node_type()) {}
+ShapeNode::ShapeNode() : ShaderNode(get_node_type()) {}
 
-void CustomNode::constant_fold(const ConstantFolder &folder)
+/*
+void ShapeNode::constant_fold(const ConstantFolder &folder)
 {
   if (folder.all_inputs_constant()) {
-    if (clamp_type == NODE_CLAMP_RANGE && (min > max)) {
-      folder.make_constant(clamp(value, max, min));
+    if (shape_type == NODE_SHAPE_POLYGON) {
+      folder.make_constant(0);//clamp(value, max, min));
     }
     else {
-      folder.make_constant(clamp(value, min, max));
+      folder.make_constant(0);//clamp(value, max, min));
     }
   }
 }
-
-void CustomNode::compile(SVMCompiler &compiler)
+*/
+void ShapeNode::compile(SVMCompiler &compiler)
 {
   ShaderInput *value_in = input("Value");
-  ShaderInput *min_in = input("Min");
-  ShaderInput *max_in = input("Max");
+  ShaderInput *sides_in = input("Sides");
+  ShaderInput *offset_in = input("Offset");
+  ShaderInput *scale_in = input("Scale");
+  //ShaderInput *rotation_in = input("Rotation");
   ShaderOutput *result_out = output("Result");
 
   int value_stack_offset = compiler.stack_assign(value_in);
-  int min_stack_offset = compiler.stack_assign(min_in);
-  int max_stack_offset = compiler.stack_assign(max_in);
+  int sides_stack_offset = compiler.stack_assign(sides_in);
+  int offset_stack_offset = compiler.stack_assign(offset_in);
+  int scale_stack_offset = compiler.stack_assign(scale_in);
+  //int rotation_stack_offset = compiler.stack_assign(rotation_in); //Add this back in later. Currently not in
   int result_stack_offset = compiler.stack_assign(result_out);
 
-  compiler.add_node(NODE_CUSTOM,
+  compiler.add_node(NODE_SHAPE,
                     value_stack_offset,
-                    compiler.encode_uchar4(min_stack_offset, max_stack_offset, clamp_type),
+                    compiler.encode_uchar4(sides_stack_offset, offset_stack_offset, scale_stack_offset, shape_type),
                     result_stack_offset);
-  compiler.add_node(__float_as_int(min), __float_as_int(max));
+  //compiler.add_node(__float_as_int(min), __float_as_int(max));
 }
 
-void CustomNode::compile(OSLCompiler &compiler)
+void ShapeNode::compile(OSLCompiler &compiler)
 {
-  compiler.parameter(this, "clamp_type");
-  compiler.add(this, "node_custom");
+  compiler.parameter(this, "shape_type");
+  compiler.add(this, "node_shape"); // use 
 }
 
 /* AOV Output */

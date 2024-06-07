@@ -456,11 +456,11 @@ static ShaderNode *add_node(Scene *scene,
     clamp_node->set_clamp_type((NodeClampType)b_clamp_node.clamp_type());
     node = clamp_node;
   }
-    else if (b_node.is_a(&RNA_ShaderNodeCustom)) {
-    BL::ShaderNodeCustom b_clamp_node(b_node);
-    CustomNode *clamp_node = graph->create_node<CustomNode>();
-    clamp_node->set_clamp_type((NodeClampType)b_clamp_node.clamp_type());
-    node = clamp_node;
+    else if (b_node.is_a(&RNA_ShaderNodeShape)) {
+    BL::ShaderNodeShape b_shape_node(b_node);
+    ShapeNode *shape_node = graph->create_node<ShapeNode>();
+    shape_node->set_shape_type((NodeShapeType)b_shape_node.shape_type());
+    node = shape_node;
   }
   else if (b_node.is_a(&RNA_ShaderNodeMath)) {
     BL::ShaderNodeMath b_math_node(b_node);

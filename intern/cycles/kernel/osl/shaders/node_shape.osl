@@ -1,0 +1,14 @@
+/* SPDX-FileCopyrightText: 2011-2022 Blender Foundation
+ *
+ * SPDX-License-Identifier: Apache-2.0 */
+
+#include "stdcycles.h"
+
+shader node_shape(string shape_type = "polygon",
+                  int Sides = 4,
+                  float3 Offset = {0.0, 0.0, 0.0},
+                  float3 Scale = {1.0, 1.0, 1.0},
+                  output float Result = 0.0)
+{
+  Result = 1;
+}

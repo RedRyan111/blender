@@ -266,7 +266,6 @@ class NODE_MT_category_shader_converter(Menu):
 
         node_add_menu.add_node_type(layout, "ShaderNodeBlackbody")
         node_add_menu.add_node_type(layout, "ShaderNodeClamp")
-        node_add_menu.add_node_type(layout, "ShaderNodeCustom")
         node_add_menu.add_node_type(layout, "ShaderNodeValToRGB")
         node_add_menu.add_node_type(layout, "ShaderNodeCombineColor")
         node_add_menu.add_node_type(layout, "ShaderNodeCombineXYZ")
@@ -290,7 +289,7 @@ class NODE_MT_category_shader_texture(Menu):
 
     def draw(self, _context):
         layout = self.layout
-
+        node_add_menu.add_node_type(layout, "ShaderNodeShape")
         node_add_menu.add_node_type(layout, "ShaderNodeTexBrick")
         node_add_menu.add_node_type(layout, "ShaderNodeTexChecker")
         node_add_menu.add_node_type(layout, "ShaderNodeTexEnvironment")

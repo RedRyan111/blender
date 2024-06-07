@@ -434,6 +434,12 @@ const EnumPropertyItem rna_enum_node_clamp_items[] = {
     {0, nullptr, 0, nullptr, nullptr},
 };
 
+const EnumPropertyItem rna_enum_node_shape_items[] = {
+    {NODE_SHAPE_POLYGON, "POLYGON", 0, "Polygon", "Constrain value between min and max"},
+    {NODE_SHAPE_CIRCLE, "CIRCLE", 0, "Circle", "Constrain value between min and max, swapping arguments when min > max"},
+    {0, nullptr, 0, nullptr, nullptr},
+};
+
 static const EnumPropertyItem rna_enum_node_tex_dimensions_items[] = {
     {1, "1D", 0, "1D", "Use the scalar value W as input"},
     {2, "2D", 0, "2D", "Use the 2D vector (X, Y) as input. The Z component is ignored"},
@@ -4298,14 +4304,14 @@ static void def_clamp(StructRNA *srna)
   RNA_def_property_update(prop, NC_NODE | NA_EDITED, "rna_ShaderNode_socket_update");
 }
 
-static void def_custom(StructRNA *srna)
+static void def_shape(StructRNA *srna)
 {
   PropertyRNA *prop;
 
-  prop = RNA_def_property(srna, "clamp_type", PROP_ENUM, PROP_NONE);
+  prop = RNA_def_property(srna, "shape_type", PROP_ENUM, PROP_NONE);
   RNA_def_property_enum_sdna(prop, nullptr, "custom1");
-  RNA_def_property_enum_items(prop, rna_enum_node_clamp_items);
-  RNA_def_property_ui_text(prop, "Clamp Type", "");
+  RNA_def_property_enum_items(prop, rna_enum_node_shape_items);
+  RNA_def_property_ui_text(prop, "Shape Type", "");
   RNA_def_property_update(prop, NC_NODE | NA_EDITED, "rna_ShaderNode_socket_update");
 }
 

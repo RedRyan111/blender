@@ -161,7 +161,7 @@ CCL_NAMESPACE_END
 #include "kernel/svm/camera.h"
 #include "kernel/svm/checker.h"
 #include "kernel/svm/clamp.h"
-#include "kernel/svm/custom.h"
+#include "kernel/svm/shape.h"
 #include "kernel/svm/closure.h"
 #include "kernel/svm/convert.h"
 #include "kernel/svm/displace.h"
@@ -565,8 +565,8 @@ ccl_device void svm_eval_nodes(KernelGlobals kg,
       SVM_CASE(NODE_CLAMP)
       offset = svm_node_clamp(kg, sd, stack, node.y, node.z, node.w, offset);
       break;
-      SVM_CASE(NODE_CUSTOM)
-      offset = svm_node_custom(kg, sd, stack, node.y, node.z, node.w, offset);
+      SVM_CASE(NODE_SHAPE)
+      offset = svm_node_shape(kg, sd, stack, node.y, node.z, node.w, offset);
       break;
 #ifdef __SHADER_RAYTRACE__
       SVM_CASE(NODE_BEVEL)

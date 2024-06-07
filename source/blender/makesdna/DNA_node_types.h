@@ -2396,6 +2396,12 @@ enum {
   NODE_CLAMP_RANGE = 1,
 };
 
+/** Shape node types. */
+enum {
+  NODE_SHAPE_POLYGON = 0,
+  NODE_SHAPE_CIRCLE = 1,
+};
+
 /** Map range node types. */
 enum {
   NODE_MAP_RANGE_LINEAR = 0,
